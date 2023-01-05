@@ -20,6 +20,7 @@
     "date-fns": "^2.29.3",
     "eslint": "8.30.0",
     "eslint-config-next": "13.0.7",
+    "firebase": "^9.15.0",
     "html2canvas": "^1.4.1",
     "lodash-es": "^4.17.21",
     "next": "13.0.7",
