@@ -1,0 +1,15 @@
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+}
+
+.inputWrapper label::after {
+  margin-left: 4px;
+  content: '*';
+  color: red;
+}
+
+.inputWrapper input {
+  height: 40px;
+}
