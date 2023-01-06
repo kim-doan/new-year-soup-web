@@ -29,9 +29,8 @@ const Register = () => {
   const passwordRef = useRef<string | null>(null);
   passwordRef.current = watch('password');
 
-  const onSubmit: SubmitHandler<RegisterForm> = async (data) => {
-    const user = await createUser(data.id, data.password);
-    console.log(user);
+  const onSubmit: SubmitHandler<RegisterForm> = (data) => {
+    createUser(data.id, data.password);
   };
 
   return (
