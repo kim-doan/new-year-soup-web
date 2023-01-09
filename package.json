@@ -34,6 +34,7 @@
     "@types/color": "^3.0.3",
     "@types/date-fns": "^2.6.0",
     "@types/recoil": "^0.0.9",
+    "encoding": "^0.1.13",
     "prettier": "^2.8.1"
   }
 }
