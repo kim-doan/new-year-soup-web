@@ -1,43 +1,65 @@
 'use client';
+import { useRouter } from 'next/navigation';
 import React from 'react';
-import { useForm, Resolver } from 'react-hook-form';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { FormIdError, FormPasswordError } from '../components/authFormError';
+import styles from './login.module.css';
+import { siginInUser } from './services/loginServices';
 
-type FormValues = {
-  firstName: string;
-  lastName: string;
-};
-
-const resolver: Resolver<FormValues> = async (values) => {
-  return {
-    values: values.firstName ? values : {},
-    errors: !values.firstName
-      ? {
-          firstName: {
-            type: 'required',
-            message: 'This is required.',
-          },
-        }
-      : {},
-  };
+type LoginForm = {
+  id: string;
+  password: string;
 };
 
 const Login = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<FormValues>({ resolver });
-  const onSubmit = handleSubmit((data) => console.log(data));
+  } = useForm<LoginForm>();
+
+  const onSubmit: SubmitHandler<LoginForm> = async (data) => {
+    const res = await siginInUser(data.id, data.password);
+    console.log(res);
+
+    if (res?.user) {
+      router.push('/');
+    }
+  };
 
   return (
-    <form onSubmit={onSubmit}>
-      <input {...register('firstName')} placeholder="Bill" />
-      {errors?.firstName && <p>{errors.firstName.message}</p>}
+    <>
+      <div>로그인</div>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className={styles.inputWrapper}>
+          <input
+            {...register('id', {
+              required: true,
+              minLength: 5,
+              maxLength: 12,
+              pattern: /^[a-zA-Z0-9]*$/,
+            })}
+            maxLength={12}
+            autoFocus
+            placeholder="아이디"
+          />
+          <FormIdError fieldError={errors.id} />
+        </div>
 
-      <input {...register('lastName')} placeholder="Luo" />
+        <div className={styles.inputWrapper}>
+          <input
+            {...register('password', { required: true, minLength: 8 })}
+            type="password"
+            maxLength={30}
+            placeholder="비밀번호"
+          />
+          <FormPasswordError fieldError={errors.password} />
+        </div>
 
-      <input type="submit" />
-    </form>
+        <input type="submit" />
+      </form>
+    </>
   );
 };
 
