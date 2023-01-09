@@ -1,4 +1,5 @@
-import { createUserWithEmailAndPassword, type AuthError } from 'firebase/auth';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { AuthError } from '../../../common/lib/enums/authError';
 import { authService } from '../../../config/firebase';
 
 export const createUser = async (id: string, pw: string) => {
@@ -12,7 +13,7 @@ export const createUser = async (id: string, pw: string) => {
 
     return res;
   } catch (e) {
-    if (String(e).includes('auth/email-already-in-use')) {
+    if (String(e).includes(AuthError.EMAIL_ALREADY_IN_USE)) {
       alert('이미 사용중인 아이디 입니다');
     }
   }
