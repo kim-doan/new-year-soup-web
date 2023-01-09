@@ -1,5 +1,5 @@
 'use client';
-import { useMutation } from '@tanstack/react-query';
+import { useRouter } from 'next/navigation';
 import React, { useRef } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import {
@@ -7,7 +7,7 @@ import {
   FormNameError,
   FormPasswordConfirmError,
   FormPasswordError,
-} from '../components/registerFormError';
+} from '../components/authFormError';
 import styles from './register.module.css';
 import { createUser } from './services/registerServices';
 
@@ -19,6 +19,7 @@ type RegisterForm = {
 };
 
 const Register = () => {
+  const router = useRouter();
   const {
     register,
     handleSubmit,
@@ -29,8 +30,12 @@ const Register = () => {
   const passwordRef = useRef<string | null>(null);
   passwordRef.current = watch('password');
 
-  const onSubmit: SubmitHandler<RegisterForm> = (data) => {
-    createUser(data.id, data.password);
+  const onSubmit: SubmitHandler<RegisterForm> = async (data) => {
+    const res = await createUser(data.id, data.password);
+
+    if (res?.user) {
+      router.push('/auth/login');
+    }
   };
 
   return (
