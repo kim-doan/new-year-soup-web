@@ -1,6 +1,6 @@
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { AuthError } from '../../../common/lib/enums/authError';
-import { authService } from '../../../config/firebase';
+import { authService } from '../../../common/lib/firebase/firebase';
 
 export const createUser = async (id: string, pw: string) => {
   try {
