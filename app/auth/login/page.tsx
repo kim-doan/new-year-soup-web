@@ -2,6 +2,8 @@
 import { useRouter } from 'next/navigation';
 import React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { useRecoilState } from 'recoil';
+import { authState } from '../../states';
 import { FormIdError, FormPasswordError } from '../components/authFormError';
 import styles from './login.module.css';
 import { siginInUser } from './services/loginServices';
@@ -18,10 +20,11 @@ const Login = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<LoginForm>();
+  const [_, setUser] = useRecoilState(authState);
 
   const onSubmit: SubmitHandler<LoginForm> = async (data) => {
     const res = await siginInUser(data.id, data.password);
-    console.log(res);
+    setUser('Test');
 
     if (res?.user) {
       router.push('/');
