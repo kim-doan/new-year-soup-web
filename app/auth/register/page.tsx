@@ -7,7 +7,7 @@ import {
   FormNameError,
   FormPasswordConfirmError,
   FormPasswordError,
-} from '../components/authFormError';
+} from '../components/form/authFormError';
 import styles from './register.module.css';
 import { createUser } from './services/registerServices';
 

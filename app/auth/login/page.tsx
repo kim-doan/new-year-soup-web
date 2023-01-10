@@ -4,7 +4,10 @@ import React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useRecoilState } from 'recoil';
 import { authState } from '../../states';
-import { FormIdError, FormPasswordError } from '../components/authFormError';
+import {
+  FormIdError,
+  FormPasswordError,
+} from '../components/form/authFormError';
 import styles from './login.module.css';
 import { siginInUser } from './services/loginServices';
 
