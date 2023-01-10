@@ -1,4 +1,6 @@
 'use client';
+import Image from 'next/image';
+import titleLogo from '../../assets/img/titleLogo.png';
 import { useRouter } from 'next/navigation';
 import React, { useRef } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
@@ -10,6 +12,7 @@ import {
 } from '../components/form/authFormError';
 import styles from './register.module.css';
 import { createUser } from './services/registerServices';
+import Button from '../components/button/button';
 
 type RegisterForm = {
   name: string;
@@ -39,56 +42,66 @@ const Register = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div className={styles.inputWrapper}>
-        <label>아이디</label>
-        <input
-          {...register('id', {
-            required: true,
-            minLength: 5,
-            maxLength: 12,
-            pattern: /^[a-zA-Z0-9]*$/,
-          })}
-          maxLength={12}
-          autoFocus
-          placeholder="영문, 숫자 5~12자"
-        />
-        <FormIdError fieldError={errors.id} />
+    <section>
+      <div className={styles.imageWrapper}>
+        <Image src={titleLogo} alt="title" className={styles.titleLogo} />
       </div>
-      <div className={styles.inputWrapper}>
-        <label>사용자 닉네임</label>
-        <input
-          {...register('name', { required: true, maxLength: 10 })}
-          maxLength={10}
-          placeholder="최대 10자, 사용자에게 보여줄 닉네임을 적어주세요"
-        />
-        <FormNameError fieldError={errors.name} />
-      </div>
-      <div className={styles.inputWrapper}>
-        <label>비밀번호</label>
-        <input
-          {...register('password', { required: true, minLength: 8 })}
-          type="password"
-          maxLength={30}
-          placeholder="최소 8자이상 입력"
-        />
-        <FormPasswordError fieldError={errors.password} />
-      </div>
-      <div className={styles.inputWrapper}>
-        <label>비밀번호 확인</label>
-        <input
-          {...register('passwordConfirm', {
-            required: true,
-            validate: (value) => value === passwordRef.current,
-          })}
-          maxLength={30}
-          type="password"
-        />
-        <FormPasswordConfirmError fieldError={errors.passwordConfirm} />
-      </div>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className={styles.inputWrapper}>
+          <label>아이디</label>
+          <input
+            {...register('id', {
+              required: true,
+              minLength: 5,
+              maxLength: 12,
+              pattern: /^[a-zA-Z0-9]*$/,
+            })}
+            maxLength={12}
+            autoFocus
+            placeholder="영문, 숫자 5~12자"
+          />
+          <FormIdError fieldError={errors.id} />
+        </div>
+        <div className={styles.inputWrapper}>
+          <label>사용자 닉네임</label>
+          <input
+            {...register('name', { required: true, maxLength: 10 })}
+            maxLength={10}
+            placeholder="사용자에게 보여줄 닉네임을 적어주세요, 최대 10자"
+          />
+          <FormNameError fieldError={errors.name} />
+        </div>
+        <div className={styles.inputWrapper}>
+          <label>비밀번호</label>
+          <input
+            {...register('password', { required: true, minLength: 8 })}
+            type="password"
+            maxLength={30}
+            placeholder="최소 8자이상 입력"
+          />
+          <FormPasswordError fieldError={errors.password} />
+        </div>
+        <div className={styles.inputWrapper}>
+          <label>비밀번호 확인</label>
+          <input
+            {...register('passwordConfirm', {
+              required: true,
+              validate: (value) => value === passwordRef.current,
+            })}
+            maxLength={30}
+            type="password"
+            placeholder="비밀번호와 일치하게 입력해주세요"
+          />
+          <FormPasswordConfirmError fieldError={errors.passwordConfirm} />
+        </div>
 
-      <button type="submit">회원가입</button>
-    </form>
+        <div className={styles.buttonWrapper}>
+          <Button status="main" type="submit">
+            회원가입
+          </Button>
+        </div>
+      </form>
+    </section>
   );
 };
 

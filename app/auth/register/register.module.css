@@ -1,15 +1,42 @@
+.imageWrapper {
+  text-align: center;
+}
+
+.titleLogo {
+  max-width: 150px;
+  max-height: 150px;
+  object-fit: cover;
+}
+
 .inputWrapper {
   display: flex;
   flex-direction: column;
   margin-bottom: 8px;
 }
 
+.inputWrapper label {
+  margin: 12px 0;
+  color: var(--theme-brown);
+  font-weight: 500;
+}
+
 .inputWrapper label::after {
   margin-left: 4px;
   content: '*';
-  color: red;
+  color: var(--font-color-red);
 }
 
 .inputWrapper input {
   height: 40px;
+  padding-left: 8px;
+  border: none;
+  background: var(--theme-dark-beige);
+}
+
+.inputWrapper input::placeholder {
+  color: #7c7c7c;
+}
+
+.buttonWrapper {
+  margin-top: 40px;
 }
