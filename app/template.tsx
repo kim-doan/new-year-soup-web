@@ -4,8 +4,8 @@ import styles from './template.module.css';
 
 export default function Template({ children }: { children: React.ReactNode }) {
   return (
-    <main className={styles.main}>
+    <div className={styles.template}>
       <RootWrapper>{children}</RootWrapper>
-    </main>
+    </div>
   );
 }

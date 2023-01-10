@@ -1,6 +1,11 @@
-.main {
+.template {
   width: 100%;
   max-width: 600px;
-  height: 100vh;
+  height: calc(100% - var(--gnb-height));
   margin: 0 auto;
+  background-color: var(--theme-beige);
+}
+
+.pageComponent {
+  padding: 60px;
 }
