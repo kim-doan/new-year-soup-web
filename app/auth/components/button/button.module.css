@@ -1,0 +1,19 @@
+.btn {
+  width: 100%;
+  height: 47px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.main {
+  background-color: var(--theme-brown);
+  color: #fff;
+}
+
+.primary {
+  border: var(--theme-brown) 2px solid;
+  background-color: var(--theme-beige);
+  color: var(--theme-brown);
+}
