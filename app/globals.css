@@ -1,7 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&display=swap');
+
 :root {
-  --font-main: 'Noto Serif KR', serif;
+  --font-family-main: 'Noto Serif KR';
   --font-color-beige: #e5d5c6;
+  --font-color-red: #ff3e3e;
+
   --theme-brown: #9c4b3a;
+  --theme-dark-brown: #693328;
   --theme-beige: #f5f2ed;
   --theme-dark-beige: #e2ded0;
 
@@ -18,7 +23,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: var(--font-main);
+  font-family: var(--font-family-main);
 }
 
 html,
