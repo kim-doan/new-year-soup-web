@@ -1,7 +1,7 @@
 .template {
   width: 100%;
   max-width: 600px;
-  height: calc(100% - var(--gnb-height));
+  height: 100%;
   margin: 0 auto;
   background-color: var(--theme-beige);
 }
