@@ -1,0 +1,214 @@
+openapi: 3.0.3
+info:
+  title: 내 떡국을 끓여줘 API
+  description: 내 떡국을 끓여줘 API 표준 스펙입니다.
+  version: 1.0.11
+security:
+  - bearerAuth: []
+tags:
+  - name: Auth
+    description: 계정 관련 API
+  - name: Soup
+    description: 떡국 관련 API
+paths:
+  /auth:
+    get:
+      tags:
+        - Auth
+      summary: 로그인한 사용자의 계정정보 조회
+      description: 파이어베이스 token을 기반으로 로그인한 사용자의 계정정보를 조회합니다.
+      operationId: meAuth
+      responses:
+        "200":
+          description: 계정정보 조회 성공
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Auth"
+    post:
+      tags:
+        - Auth
+      summary: 계정 추가
+      description: 계정을 추가합니다.
+      operationId: createAuth
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CreateAuthRequest"
+        required: true
+      responses:
+        "204":
+          description: No-Content Success
+  /soup:
+    get:
+      tags:
+        - Soup
+      summary: 로그인한 사용자의 떡국 리스트 조회
+      description: 파이어베이스 token을 기반으로 로그인한 사용자의 떡국 리스트를 조회합니다.
+      operationId: meSoup
+      parameters:
+        - name: page
+          description: 조회할 떡국 리스트의 페이지 번호를 입력합니다.
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: size
+          description: 조회할 떡국 리스트의 페이지 사이즈를 입력합니다.
+          in: query
+          schema:
+            type: integer
+            default: 10
+      responses:
+        "200":
+          description: 로그인한 사용자의 떡국 리스트
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MeSoupResponse"
+    post:
+      tags:
+        - Soup
+      summary: 떡국 전달
+      description: 파이어베이스 token을 기반으로한 사용자의 명의로 기입한 사용자에게 떡국을 전달합니다.
+      operationId: deliverySoup
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/DeliverySoupRequest"
+      responses:
+        "204":
+          description: No-Content Success
+
+  /soup/soup-detail/{soupNo}:
+    get:
+      tags:
+        - Soup
+      summary: 선택한 떡국의 상세 정보 조회
+      description: 선택한 떡국의 상세 정보를 조회합니다.
+      operationId: getSoupDetail
+      parameters:
+        - name: soupNo
+          description: 조회할 떡국 PK 번호입니다.
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: 조회한 떡국의 상세 정보
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GetSoupDetailResponse"
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+  schemas:
+    DeliverySoupRequest:
+      type: object
+      properties:
+        resUserId:
+          type: string
+          description: 떡국을 전달 받을 사용자의 UID
+        soupContents:
+          type: string
+          description: 떡국과 함께 첨부할 메시지
+        soupImgId:
+          type: string
+          description: 파이어베이스 스토리지에 업로드한 떡국 이미지 UID
+
+    GetSoupDetailResponse:
+      type: object
+      properties:
+        soupContents:
+          type: string
+          description: 떡국을 보낸 사람이 함께 첨부한 메시지입니다.
+        releaseDate:
+          type: string
+          description: 떡국 메시지를 공개할 날짜입니다.
+        reqUserId:
+          type: string
+          description: 떡국을 보낸 사람의 UID
+        reqUserName:
+          type: string
+          description: 떡국을 보낸 사람의 이름
+
+    MeSoupResponse:
+      type: object
+      properties:
+        page:
+          $ref: "#/components/schemas/Page"
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/Soup"
+
+    Page:
+      type: object
+      properties:
+        currentPage:
+          type: integer
+          description: 현재 페이지 번호
+        currentSize:
+          type: integer
+          description: 현재 페이지 사이즈
+        totalPage:
+          type: integer
+          description: 총 페이지 개수
+
+    Soup:
+      type: object
+      properties:
+        soupNo:
+          type: integer
+          description: PK No
+        reqUserId:
+          type: string
+          description: 떡국을 보낸 사람 UID
+        reqUserName:
+          type: string
+          description: 떡국을 보낸 사람 이름
+        createTime:
+          type: string
+          description: 떡국 생성일
+        soupImgId:
+          type: string
+          description: 파이어베이스 스토리지에 저장된 이미지 고유번호
+        soupImgUrl:
+          type: string
+          description: 떡국 이미지 URL
+
+    CreateAuthRequest:
+      type: object
+      properties:
+        userId:
+          type: string
+          description: 파이어베이스 UID를 입력합니다.
+        userEmail:
+          type: string
+          description: 이메일(아이디)를 입력합니다.
+        userName:
+          type: string
+          description: 파이어베이스 displayName(닉네임)을 입력합니다.
+    Auth:
+      type: object
+      properties:
+        userNo:
+          type: integer
+          description: PK No
+        userId:
+          type: string
+          description: 파이어베이스 UID를 입력합니다.
+        userEmail:
+          type: string
+          description: 이메일(아이디)를 입력합니다.
+        userName:
+          type: string
+          description: 파이어베이스 displayName(닉네임)을 입력합니다.
