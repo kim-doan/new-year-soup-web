@@ -71,6 +71,3 @@ const Login = () => {
 };
 
 export default Login;
-function siginInUser(id: string, password: string) {
-  throw new Error('Function not implemented.');
-}

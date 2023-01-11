@@ -6,17 +6,13 @@ import {
   Auth,
 } from 'firebase/auth';
 import { AuthError } from '../../common/lib/enums/authError';
-import { authService } from '../../common/lib/firebase/firebase';
+import { fbAuth } from '../../common/lib/firebase/firebase';
 
 export default class AuthService {
   public siginInUser = async (id: string, pw: string) => {
     try {
       const convertEmail = id + '@newyearsoup.com';
-      const res = await signInWithEmailAndPassword(
-        authService,
-        convertEmail,
-        pw
-      );
+      const res = await signInWithEmailAndPassword(fbAuth, convertEmail, pw);
 
       return res;
     } catch (e) {
@@ -37,7 +33,7 @@ export default class AuthService {
     try {
       const convertEmail = id + '@newyearsoup.com';
       const res = await createUserWithEmailAndPassword(
-        authService,
+        fbAuth,
         convertEmail,
         pw
       );
