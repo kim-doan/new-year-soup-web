@@ -23,7 +23,7 @@ const commonCustomizations = [
 const apis = [
   {
     name: 'soupApi',
-    specLocation: '../apispec/soupApi.yml',
+    specLocation: '../apiSpecs/soupApi.yml',
     customizations: commonCustomizations,
   },
 ];
