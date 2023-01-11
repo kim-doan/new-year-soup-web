@@ -22,17 +22,12 @@ const commonCustomizations = [
 
 const apis = [
   {
-    name: 'characterSampleApi',
-    specLocation: './apiSpecs/characterSampleApi.yaml',
-    customizations: commonCustomizations,
-  },
-  {
-    name: 'clayfulApi',
-    specLocation: './apiSpecs/clayfulApi.yaml',
+    name: 'soupApi',
+    specLocation: '../apispec/soupApi.yml',
     customizations: commonCustomizations,
   },
 ];
-const apiClientsDir = './src/apiClients';
+const apiClientsDir = '../app/apiClients';
 
 shell.rm('-r', apiClientsDir);
 
