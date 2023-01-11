@@ -1,7 +1,6 @@
 import NavigationBar from './auth/components/layout/navigationBar';
 import './globals.css';
-import Template from './template';
-import styles from './template.module.css';
+import styles from './layout.module.css';
 
 export default function RootLayout({
   children,
@@ -14,8 +13,10 @@ export default function RootLayout({
         <title>메인페이지</title>
       </head>
       <body>
-        <NavigationBar />
-        <div className={styles.pageComponent}>{children}</div>
+        <div className={styles.main}>
+          <NavigationBar />
+          <div className={styles.pageComponent}>{children}</div>
+        </div>
       </body>
     </html>
   );
