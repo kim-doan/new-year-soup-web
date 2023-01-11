@@ -1,9 +1,9 @@
 'use client';
 import { useRecoilState } from 'recoil';
-import { authState } from './states';
+import { authState } from './core/states/authState';
 
 const Home = () => {
-  const [user, _] = useRecoilState(authState);
+  const [user] = useRecoilState(authState);
 
   return (
     <div>

@@ -11,8 +11,8 @@ import {
   FormPasswordError,
 } from '../components/form/authFormError';
 import styles from './register.module.css';
-import { createUser } from './services/registerServices';
 import Button from '../components/button/button';
+import { AuthService } from 'app/core';
 
 type RegisterForm = {
   name: string;
@@ -32,6 +32,8 @@ const Register = () => {
 
   const passwordRef = useRef<string | null>(null);
   passwordRef.current = watch('password');
+
+  const { createUser } = new AuthService();
 
   const onSubmit: SubmitHandler<RegisterForm> = async (data) => {
     const res = await createUser(data.id, data.password);

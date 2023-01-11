@@ -14,10 +14,8 @@ export default function RootLayout({
         <title>메인페이지</title>
       </head>
       <body>
-        <Template>
-          <NavigationBar />
-          <div className={styles.pageComponent}>{children}</div>
-        </Template>
+        <NavigationBar />
+        <div className={styles.pageComponent}>{children}</div>
       </body>
     </html>
   );

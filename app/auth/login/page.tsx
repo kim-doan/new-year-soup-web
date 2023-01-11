@@ -1,15 +1,14 @@
 'use client';
+import { AuthService, authState } from 'app/core';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useRecoilState } from 'recoil';
-import { authState } from '../../states';
 import {
   FormIdError,
   FormPasswordError,
 } from '../components/form/authFormError';
 import styles from './login.module.css';
-import { siginInUser } from './services/loginServices';
 
 type LoginForm = {
   id: string;
@@ -23,7 +22,9 @@ const Login = () => {
     handleSubmit,
     formState: { errors },
   } = useForm<LoginForm>();
-  const [_, setUser] = useRecoilState(authState);
+  const [, setUser] = useRecoilState(authState);
+
+  const { siginInUser } = new AuthService();
 
   const onSubmit: SubmitHandler<LoginForm> = async (data) => {
     const res = await siginInUser(data.id, data.password);
@@ -70,3 +71,6 @@ const Login = () => {
 };
 
 export default Login;
+function siginInUser(id: string, password: string) {
+  throw new Error('Function not implemented.');
+}
