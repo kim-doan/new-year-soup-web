@@ -1,4 +1,6 @@
 'use client';
+import Image from 'next/image';
+import titleLogo from '../../assets/img/titleLogo.png';
 import { AuthService, authState } from 'app/core';
 import { useRouter } from 'next/navigation';
 import React from 'react';
@@ -9,6 +11,7 @@ import {
   FormPasswordError,
 } from '../components/form/authFormError';
 import styles from './login.module.css';
+import Button from '../components/button/button';
 
 type LoginForm = {
   id: string;
@@ -35,11 +38,18 @@ const Login = () => {
     }
   };
 
+  const onRouteCreateUser = () => {
+    router.push('/auth/register');
+  };
+
   return (
-    <>
-      <div>로그인</div>
+    <section>
+      <div className={styles.imageWrapper}>
+        <Image src={titleLogo} alt="title" className={styles.titleLogo} />
+      </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={styles.inputWrapper}>
+          <label>아이디</label>
           <input
             {...register('id', {
               required: true,
@@ -49,24 +59,30 @@ const Login = () => {
             })}
             maxLength={12}
             autoFocus
-            placeholder="아이디"
           />
           <FormIdError fieldError={errors.id} />
         </div>
 
         <div className={styles.inputWrapper}>
+          <label>비밀번호</label>
           <input
             {...register('password', { required: true, minLength: 8 })}
             type="password"
             maxLength={30}
-            placeholder="비밀번호"
           />
           <FormPasswordError fieldError={errors.password} />
         </div>
 
-        <input type="submit" />
+        <div className={styles.buttonWrapper}>
+          <Button status="main" type="submit">
+            떡국 만들러가기
+          </Button>
+          <Button status="primary" type="button" onClick={onRouteCreateUser}>
+            회원가입 하러가기
+          </Button>
+        </div>
       </form>
-    </>
+    </section>
   );
 };
 

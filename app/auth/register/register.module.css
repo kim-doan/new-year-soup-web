@@ -40,3 +40,7 @@
 .buttonWrapper {
   margin-top: 40px;
 }
+
+.buttonWrapper button:first-child {
+  margin-bottom: 12px;
+}

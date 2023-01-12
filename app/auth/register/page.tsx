@@ -36,11 +36,15 @@ const Register = () => {
   const { createUser } = new AuthService();
 
   const onSubmit: SubmitHandler<RegisterForm> = async (data) => {
-    const res = await createUser(data.id, data.password);
+    const res = await createUser(data.id, data.password, data.name);
 
-    if (res?.user) {
+    if (res) {
       router.push('/auth/login');
     }
+  };
+
+  const onRouteBack = () => {
+    router.back();
   };
 
   return (
@@ -100,6 +104,9 @@ const Register = () => {
         <div className={styles.buttonWrapper}>
           <Button status="main" type="submit">
             회원가입
+          </Button>
+          <Button status="primary" type="button" onClick={onRouteBack}>
+            뒤로가기
           </Button>
         </div>
       </form>
