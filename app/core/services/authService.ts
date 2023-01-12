@@ -1,14 +1,18 @@
+import { AuthApi } from 'app/apiClients/soupApi';
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  onAuthStateChanged,
-  getAuth,
-  Auth,
 } from 'firebase/auth';
 import { AuthError } from '../../common/lib/enums/authError';
 import { fbAuth } from '../../common/lib/firebase/firebase';
 
 export default class AuthService {
+  private authApi: AuthApi;
+
+  constructor() {
+    this.authApi = new AuthApi();
+  }
+
   public siginInUser = async (id: string, pw: string) => {
     try {
       const convertEmail = id + '@newyearsoup.com';
@@ -29,14 +33,24 @@ export default class AuthService {
     }
   };
 
-  public createUser = async (id: string, pw: string) => {
+  public createUser = async (id: string, pw: string, name: string) => {
     try {
       const convertEmail = id + '@newyearsoup.com';
-      const res = await createUserWithEmailAndPassword(
+      const fbRes = await createUserWithEmailAndPassword(
         fbAuth,
         convertEmail,
         pw
       );
+
+      const res = await this.authApi
+        .createAuth({
+          userId: fbRes?.user.uid,
+          userEmail: fbRes?.user.email!,
+          userName: name,
+        })
+        .then(() => {
+          return true;
+        });
 
       return res;
     } catch (e) {
