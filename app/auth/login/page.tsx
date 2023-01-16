@@ -9,9 +9,9 @@ import { useRecoilState } from 'recoil';
 import {
   FormIdError,
   FormPasswordError,
-} from '../components/form/authFormError';
+} from '../../components/form/authFormError';
 import styles from './login.module.css';
-import Button from '../components/button/button';
+import Button from '../../components/button/button';
 
 type LoginForm = {
   id: string;

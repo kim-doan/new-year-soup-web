@@ -1,4 +1,4 @@
-import NavigationBar from './auth/components/layout/navigationBar';
+import NavigationBar from './components/layout/navigationBar';
 import './globals.css';
 import styles from './layout.module.css';
 
