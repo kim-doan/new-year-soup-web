@@ -1,5 +1,5 @@
 'use client';
-import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { onAuthStateChanged } from 'firebase/auth';
 import React, { useEffect } from 'react';
 import { fbAuth } from './common/lib/firebase/firebase';
 import RootWrapper from './RootWrapper';
@@ -14,13 +14,6 @@ export default function Template({ children }: { children: React.ReactNode }) {
   return (
     <>
       <RootWrapper>{children}</RootWrapper>
-      <button
-        onClick={() => {
-          signOut(fbAuth);
-        }}
-      >
-        로그아웃
-      </button>
     </>
   );
 }
