@@ -43,7 +43,7 @@ const Login = () => {
   };
 
   return (
-    <section>
+    <section className={styles.page}>
       <div className={styles.imageWrapper}>
         <Image src={titleLogo} alt="title" className={styles.titleLogo} />
       </div>
