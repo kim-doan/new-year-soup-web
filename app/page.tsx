@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 import { useRecoilState } from 'recoil';
 import Button from './components/button/button';
 import { authState } from './core/states/authState';
@@ -11,7 +12,9 @@ const Home = () => {
     <section className={styles.page}>
       <div className={styles.background}></div>
       <div className={styles.buttonWrapper}>
-        <Button status="main">시작하기</Button>
+        <Link href={'/auth/login'}>
+          <Button status="main">시작하기</Button>
+        </Link>
       </div>
     </section>
   );
