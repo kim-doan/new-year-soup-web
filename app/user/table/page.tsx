@@ -1,6 +1,18 @@
+'use client';
+import React, { useCallback, useEffect, useState } from 'react';
 import LoadingSpinner from 'app/components/loadingSpinner/loadingSpinner';
 import SoupService from 'app/core/services/soupService';
-import styles from './soupTable.module.css';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import styles from './tablePage.module.css';
+import NextArrow from './components/nextArrow';
+import PrevArrow from './components/prevArrow';
+import SoupTable from './components/soupTable';
+import Link from 'next/link';
+import Button from 'app/components/button/button';
+import { useRecoilState } from 'recoil';
+import { SoupMessage } from 'app/core/states/soupState';
 
 const settings = {
   dots: true,
@@ -8,13 +20,39 @@ const settings = {
   speed: 500,
   slidesToShow: 1,
   slidesToScroll: 1,
-  // nextArrow: <NextArrow />,
-  // prevArrow: <PrevArrow />,
+  nextArrow: <NextArrow />,
+  prevArrow: <PrevArrow />,
 };
 
-const SoupTable = () => {
+const TablePage = () => {
+  const [list, setList] = useState<string[][]>();
+  const [soupMessage, setSoupMessage] = useRecoilState(SoupMessage);
+
   const soupService = new SoupService();
   const isLoading = false;
+
+  const afterChange = () => {};
+
+  const division = useCallback(
+    (items = ['a', 'b', 'c', 'd', 'e']) => {
+      const newArray = [];
+
+      for (let i = 0; i < items.length; i += 4) {
+        newArray.push(items.slice(i, i + 4));
+      }
+
+      setList(newArray);
+    },
+    [setList]
+  );
+
+  const handleModalClose = () => {
+    setSoupMessage('');
+  };
+
+  useEffect(() => {
+    division();
+  }, [division]);
 
   if (isLoading) {
     return (
@@ -25,7 +63,7 @@ const SoupTable = () => {
   }
 
   return (
-    <section className={styles.page}>
+    <>
       <div className={styles.titleWrapper}>
         <p>
           테스트 님에게
@@ -33,34 +71,34 @@ const SoupTable = () => {
           떡국 1그릇이 배달됐어요!!
         </p>
       </div>
-      <div className={styles.tableWrapper}>
-        <div className={styles.soupTable}></div>
-      </div>
-    </section>
+      <section className={styles.page}>
+        <Slider {...settings} afterChange={afterChange}>
+          {list?.map((i, index) => {
+            return <SoupTable items={i} key={index} />;
+          })}
+        </Slider>
+        <div className={styles.buttonsWrapper}>
+          <Button status="main">링크 복사하기</Button>
+          <Link href="/user/cook">
+            <Button status="main">떡국 전해주기</Button>
+          </Link>
+        </div>
+        {soupMessage && (
+          <div className={styles.modalWrapper}>
+            <div className={styles.background} onClick={handleModalClose}></div>
+            <div className={styles.messageWrapper}>
+              <textarea
+                className={styles.text}
+                value={soupMessage}
+                readOnly={true}
+                spellCheck={false}
+              ></textarea>
+            </div>
+          </div>
+        )}
+      </section>
+    </>
   );
 };
 
-// const NextArrow = (props) => {
-//     const { className, style, onClick } = props;
-
-//     return (
-//         <div
-//             className={className}
-//             style={{ ...style, right: "50px", top: "140px" }}
-//             onClick={onClick}
-//         />
-//     );
-// }
-
-// const PrevArrow = (props) => {
-//     const { className, style, onClick } = props;
-//     return (
-//         <div
-//             className={className}
-//             style={{ ...style, left: "10px", zIndex: 1 }}
-//             onClick={onClick}
-//         />
-//     );
-// }
-
-export default SoupTable;
+export default TablePage;

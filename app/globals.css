@@ -42,6 +42,21 @@ ul {
   list-style: none;
 }
 
+.slick-prev:before,
+.slick-next:before {
+  font-family: 'slick';
+  font-size: 40px !important;
+  opacity: 0.75;
+  color: white;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.slick-next,
+.slick-prev {
+  margin-top: 60px;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
