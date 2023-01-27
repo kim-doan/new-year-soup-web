@@ -1,7 +1,7 @@
 'use client';
 import React, { useCallback, useEffect, useState } from 'react';
-import LoadingSpinner from 'app/components/loadingSpinner/loadingSpinner';
-import SoupService from 'app/core/services/soupService';
+import LoadingSpinner from '../../components/loadingSpinner/loadingSpinner';
+import SoupService from 'core/services/soupService';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -10,9 +10,9 @@ import NextArrow from './components/nextArrow';
 import PrevArrow from './components/prevArrow';
 import SoupTable from './components/soupTable';
 import Link from 'next/link';
-import Button from 'app/components/button/button';
+import Button from '../../components/button/button';
 import { useRecoilState } from 'recoil';
-import { SoupMessage } from 'app/core/states/soupState';
+import { SoupMessage } from 'core/states/soupState';
 
 const settings = {
   dots: true,

@@ -12,7 +12,7 @@ import {
 } from '../../components/form/authFormError';
 import styles from './register.module.css';
 import Button from '../../components/button/button';
-import { AuthService } from 'app/core';
+import { AuthService } from 'core';
 import Head from 'next/head';
 
 type RegisterForm = {

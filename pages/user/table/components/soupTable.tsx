@@ -1,4 +1,4 @@
-import { SoupMessage } from 'app/core/states/soupState';
+import { SoupMessage } from 'core/states/soupState';
 import Image from 'next/image';
 import { useRecoilState } from 'recoil';
 import soupImage from 'assets/img/soup01.png';
