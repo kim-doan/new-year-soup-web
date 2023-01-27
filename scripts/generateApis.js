@@ -27,7 +27,7 @@ const apis = [
     customizations: commonCustomizations,
   },
 ];
-const apiClientsDir = './app/apiClients';
+const apiClientsDir = './apiClients';
 
 shell.rm('-r', apiClientsDir);
 

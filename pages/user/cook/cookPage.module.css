@@ -1,0 +1,32 @@
+.page {
+  width: 100%;
+  height: calc(100vh - var(--gnb-height) - 85px);
+  background-image: url(../../../assets/img/createSoupBg.png);
+  background-repeat: no-repeat;
+  background-size: 600;
+  background-color: #e4d5c6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.soupTray {
+  position: relative;
+  width: 440px;
+  height: 400px;
+  margin-top: 60px;
+  background-image: url(../assets/tray.png);
+  background-repeat: no-repeat;
+}
+
+.soupTray img {
+  position: absolute;
+  left: 100px;
+  bottom: 80px;
+}
+
+@media (max-width: 600px) {
+  .page {
+    background-size: contain;
+  }
+}
