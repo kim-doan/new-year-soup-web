@@ -1,18 +1,27 @@
 'use client';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { HiMenu } from 'react-icons/hi';
 import { IoClose } from 'react-icons/io5';
 import { TiHome } from 'react-icons/ti';
 import { TbSoup } from 'react-icons/tb';
 import { VscSignOut } from 'react-icons/vsc';
 import styles from './navigationBar.module.css';
+import { fbAuth } from 'common/lib/firebase/firebase';
+import { onAuthStateChanged } from 'firebase/auth';
+import { useRecoilState } from 'recoil';
+import { authState } from 'core';
 
 const NavigationBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleNavigation = () => {
     setMenuOpen(!menuOpen);
+  };
+
+  const handleSignOut = async () => {
+    await fbAuth.signOut();
+    window.location.reload();
   };
 
   return (
@@ -49,14 +58,25 @@ const NavigationBar = () => {
               내 밥상 보러가기
             </Link>
           </li>
-          <li>
-            <Link href="/">
-              <div className={styles.iconWrapper}>
-                <VscSignOut />
+          {fbAuth && fbAuth.currentUser ? (
+            <li>
+              <div onClick={handleSignOut}>
+                <div className={styles.iconWrapper}>
+                  <VscSignOut />
+                </div>
+                로그아웃
               </div>
-              로그아웃
-            </Link>
-          </li>
+            </li>
+          ) : (
+            <li>
+              <Link href="/auth/login">
+                <div className={styles.iconWrapper}>
+                  <VscSignOut />
+                </div>
+                로그인
+              </Link>
+            </li>
+          )}
         </ul>
       </nav>
     </>

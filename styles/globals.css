@@ -1,7 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&display=swap');
+/* @import url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/ChosunCentennial.woff2'); */
+@font-face {
+  font-family: 'ChosunCentennial';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/ChosunCentennial.woff2')
+    format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
 
 :root {
-  --font-family-main: 'Noto Serif KR';
+  --font-family-main: 'ChosunCentennial';
   --font-color-beige: #e5d5c6;
   --font-color-red: #ff3e3e;
   --font-color-brown: #695157;
@@ -24,7 +31,8 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: var(--font-family-main);
+  /* font-family: var(--font-family-main); */
+  font-family: 'ChosunCentennial';
 }
 
 html,

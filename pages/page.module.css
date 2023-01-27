@@ -21,3 +21,14 @@
 .buttonWrapper button {
   width: 240px;
 }
+
+.imageWrapper {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.titleLogo {
+  max-width: 180px;
+  max-height: 180px;
+  object-fit: cover;
+}

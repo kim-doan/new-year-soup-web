@@ -32,7 +32,6 @@ const Login = () => {
 
   const onSubmit: SubmitHandler<LoginForm> = async (data) => {
     const res = await siginInUser(data.id, data.password);
-    setUser('Test');
 
     if (res?.user) {
       router.push('/');

@@ -66,3 +66,17 @@
   color: #fff;
   font-size: 30px;
 }
+
+.menu li div {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  color: var(--font-color-beige);
+  cursor: pointer;
+}
+
+.menu li div .iconWrapper {
+  margin-right: 10px;
+  color: #fff;
+  font-size: 30px;
+}
