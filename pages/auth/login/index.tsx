@@ -1,11 +1,9 @@
 'use client';
 import Image from 'next/image';
 import titleLogo from 'assets/img/titleLogo.png';
-import { AuthService, authState } from 'core';
-import { useRouter } from 'next/navigation';
+import { AuthService } from 'core';
 import React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { useRecoilState } from 'recoil';
 import {
   FormIdError,
   FormPasswordError,
@@ -13,20 +11,23 @@ import {
 import styles from './login.module.css';
 import Button from '../../components/button/button';
 import Head from 'next/head';
+import { NextRouter, withRouter } from 'next/router';
 
 type LoginForm = {
   id: string;
   password: string;
 };
 
-const Login = () => {
-  const router = useRouter();
+interface LoginProps {
+  router: NextRouter;
+}
+
+const Login = ({ router }: LoginProps) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<LoginForm>();
-  const [, setUser] = useRecoilState(authState);
 
   const { siginInUser } = new AuthService();
 
@@ -34,7 +35,11 @@ const Login = () => {
     const res = await siginInUser(data.id, data.password);
 
     if (res?.user) {
-      router.push('/');
+      if (router.query.redirect) {
+        router.push(`/user/table/${router.query.redirect}`);
+      } else {
+        router.push('/');
+      }
     }
   };
 
@@ -97,4 +102,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default withRouter(Login);
