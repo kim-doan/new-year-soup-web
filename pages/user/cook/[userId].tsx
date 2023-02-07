@@ -10,7 +10,10 @@ import html2canvas from 'html2canvas';
 import { v4 as uuidv4 } from 'uuid';
 import { ref, uploadBytesResumable } from 'firebase/storage';
 import { storage } from 'common/lib/firebase/firebase';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import { useRouter } from 'next/router';
+import SoupService from 'core/services/soupService';
+import Button from 'pages/components/button/button';
 
 const lottieOptions = {
   loop: true,
@@ -22,9 +25,15 @@ const lottieOptions = {
 };
 
 const CookPage = () => {
+  const router = useRouter();
+  const { userId } = router.query;
   const [soupBowl] = useRecoilState(SoupBowl);
   const [fingerAction] = useRecoilState(FingerAction);
+  const contentsRef = useRef<HTMLTextAreaElement>(null);
+  const [contentsModal, setContentsModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
+  const { deliverySoup } = new SoupService();
 
   const handleSoupUpload = () => {
     if (isLoading) return;
@@ -35,8 +44,7 @@ const CookPage = () => {
     html2canvas(soupDiv, {
       backgroundColor: null,
     }).then((canvas) => {
-      const storageRef = ref(storage, `test/${uuidv4()}.png`);
-      console.log(storageRef, canvas);
+      const storageRef = ref(storage, `${userId}/${uuidv4()}.png`);
       const blobData = dataURItoBlob(canvas.toDataURL('image/png'));
 
       const uploadTask = uploadBytesResumable(storageRef, blobData);
@@ -56,13 +64,16 @@ const CookPage = () => {
         (error) => {
           alert('떡국 이미지 업로드에 실패했습니다.');
         },
-        () => {
-          // dispatch(trayAction.setSoupImgId(storageRef.name));
-          // dispatch(soupAction.addSoupLoad());
+        async () => {
+          await deliverySoup(
+            userId as string,
+            contentsRef.current?.value ?? '',
+            storageRef.name
+          );
+
+          setIsLoading(false);
         }
       );
-
-      setIsLoading(false);
     });
   };
 
@@ -85,6 +96,10 @@ const CookPage = () => {
     return new Blob([ia], { type: mimeString });
   };
 
+  const handleModalState = () => {
+    setContentsModal(!contentsModal);
+  };
+
   return (
     <section className={styles.page}>
       <div className={styles.soupTray}>
@@ -100,7 +115,27 @@ const CookPage = () => {
           <Image src={soupBowl} alt="soupImage" width={240} />
         </div>
       </div>
-      <SlideMenu handleSoupUpload={handleSoupUpload} />
+      {contentsModal && (
+        <div className={styles.modalWrapper}>
+          <div className={styles.background}></div>
+          <div className={styles.messageWrapper}>
+            <textarea
+              ref={contentsRef}
+              className={styles.text}
+              spellCheck={false}
+            ></textarea>
+          </div>
+          <div className={styles.buttonsWrapper}>
+            <Button status="primary" onClick={handleModalState}>
+              취소
+            </Button>
+            <Button status="main" onClick={handleSoupUpload}>
+              전달하기
+            </Button>
+          </div>
+        </div>
+      )}
+      <SlideMenu handleModalState={handleModalState} />
     </section>
   );
 };

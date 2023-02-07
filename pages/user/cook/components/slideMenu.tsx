@@ -10,10 +10,10 @@ import IngredientsMenu from './ingredientsMenu';
 type MenuTypes = 'Bowl' | 'Ingredient';
 
 interface SlideMenuProps {
-  handleSoupUpload: () => void;
+  handleModalState: () => void;
 }
 
-const SlideMenu = ({ handleSoupUpload }: SlideMenuProps) => {
+const SlideMenu = ({ handleModalState }: SlideMenuProps) => {
   const [slideOpen, setSlideOpen] = useState(false);
   const [menuPage, setMenuPage] = useState<MenuTypes>('Bowl');
 
@@ -75,7 +75,13 @@ const SlideMenu = ({ handleSoupUpload }: SlideMenuProps) => {
             이전으로
           </Button>
           {menuPage === 'Ingredient' ? (
-            <Button status="main" onClick={handleSoupUpload}>
+            <Button
+              status="main"
+              onClick={() => {
+                setSlideOpen(false);
+                handleModalState();
+              }}
+            >
               메시지 작성하기
             </Button>
           ) : (
