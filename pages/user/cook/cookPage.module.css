@@ -25,6 +25,27 @@
   bottom: 80px;
 }
 
+.soupWrapper {
+  width: inherit;
+  height: inherit;
+}
+
+.lottieWrapper {
+  position: absolute;
+  width: 100%;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  top: -40px;
+  left: 40px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.lottieWrapper.play {
+  opacity: 0.95;
+}
+
 @media (max-width: 600px) {
   .page {
     background-size: contain;
