@@ -1,67 +1,61 @@
-import { SoupMessage } from 'core/states/soupState';
+import soupImage from 'assets/img/soup01.png';
 import Image from 'next/image';
 import { useRecoilState } from 'recoil';
-import soupImage from 'assets/img/soup01.png';
 
+import { Soup } from 'app/apiClients/soupApi';
 import styles from './soupTable.module.css';
 
 interface SoupTableProps {
-  items: string[];
+  soupList: Soup[];
 }
 
-const SoupTable = ({ items }: SoupTableProps) => {
-  const [_, setSoupMessage] = useRecoilState(SoupMessage);
-
-  const changeSoupMessage = (message: string) => {
-    setSoupMessage(message);
-  };
-
+const SoupTable = ({ soupList }: SoupTableProps) => {
   return (
     <>
       <div className={styles.tableWrapper}>
         <div className={styles.soupTable}>
-          {items[0] && (
-            <article
-              className={styles.position_one}
-              onClick={() => {
-                changeSoupMessage(items[0]);
-              }}
-            >
-              <Image src={soupImage} alt="떡국" width={70} />
-              <span>{items[0]}</span>
+          {soupList[0] && (
+            <article className={styles.position_one}>
+              <Image
+                src={soupList[0].soupImgUrl ?? soupImage}
+                alt="떡국1"
+                width={70}
+                height={100}
+              />
+              <span>{soupList[0].reqUserName ?? ''}</span>
             </article>
           )}
-          {items[1] && (
-            <article
-              className={styles.position_two}
-              onClick={() => {
-                changeSoupMessage(items[1]);
-              }}
-            >
-              <Image src={soupImage} alt="떡국" width={70} />
-              <span>{items[1]}</span>
+          {soupList[1] && (
+            <article className={styles.position_two}>
+              <Image
+                src={soupList[1].soupImgUrl ?? soupImage}
+                alt="떡국2"
+                width={70}
+                height={100}
+              />
+              <span>{soupList[1].reqUserName ?? ''}</span>
             </article>
           )}
-          {items[2] && (
-            <article
-              className={styles.position_three}
-              onClick={() => {
-                changeSoupMessage(items[2]);
-              }}
-            >
-              <Image src={soupImage} alt="떡국" width={70} />
-              <span>{items[2]}</span>
+          {soupList[2] && (
+            <article className={styles.position_three}>
+              <Image
+                src={soupList[2].soupImgUrl ?? soupImage}
+                alt="떡국3"
+                width={70}
+                height={100}
+              />
+              <span>{soupList[2].reqUserName ?? ''}</span>
             </article>
           )}
-          {items[3] && (
-            <article
-              className={styles.position_four}
-              onClick={() => {
-                changeSoupMessage(items[3]);
-              }}
-            >
-              <Image src={soupImage} alt="떡국" width={70} />
-              <span>{items[3]}</span>
+          {soupList[3] && (
+            <article className={styles.position_four}>
+              <Image
+                src={soupList[3].soupImgUrl ?? soupImage}
+                alt="떡국4"
+                width={70}
+                height={100}
+              />
+              <span>{soupList[3].reqUserName ?? ''}</span>
             </article>
           )}
         </div>

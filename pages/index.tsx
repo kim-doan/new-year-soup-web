@@ -6,9 +6,21 @@ import Button from './components/button/button';
 import { authState } from 'core/states/authState';
 import styles from './page.module.css';
 import Image from 'next/image';
+import { fbAuth } from 'common/lib/firebase/firebase';
+import { useEffect, useState } from 'react';
 
 const Home = () => {
-  const [user] = useRecoilState(authState);
+  const [isLogin, setIsLogin] = useState(false);
+
+  if (fbAuth) {
+    fbAuth.onAuthStateChanged((user) => {
+      if (user) {
+        setIsLogin(true);
+      } else {
+        setIsLogin(false);
+      }
+    });
+  }
 
   return (
     <>
@@ -22,9 +34,15 @@ const Home = () => {
               <Image src={titleLogo} alt="title" className={styles.titleLogo} />
             </div>
             <div className={styles.buttonWrapper}>
-              <Link href={'/user/table'}>
-                <Button status="main">시작하기</Button>
-              </Link>
+              {isLogin ? (
+                <Link href={`/user/table/${fbAuth.currentUser?.uid}`}>
+                  <Button status="main">시작하기</Button>
+                </Link>
+              ) : (
+                <Link href={`/auth/login`}>
+                  <Button status="main">로그인</Button>
+                </Link>
+              )}
             </div>
           </div>
         </section>

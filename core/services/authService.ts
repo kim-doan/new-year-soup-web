@@ -18,6 +18,8 @@ export default class AuthService {
       const convertEmail = id + '@newyearsoup.com';
       const res = await signInWithEmailAndPassword(fbAuth, convertEmail, pw);
 
+      console.log(res);
+
       return res;
     } catch (e) {
       const authError = String(e);
@@ -57,6 +59,16 @@ export default class AuthService {
       if (String(e).includes(AuthError.EMAIL_ALREADY_IN_USE)) {
         alert('이미 사용중인 아이디 입니다');
       }
+    }
+  };
+
+  public getUser = async (uid: string) => {
+    try {
+      const res = await this.authApi.getAuth(uid);
+
+      return res.data;
+    } catch (e) {
+      console.log(e);
     }
   };
 }
