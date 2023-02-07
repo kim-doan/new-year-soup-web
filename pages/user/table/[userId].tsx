@@ -1,5 +1,6 @@
 'use client';
 import { useQuery } from '@tanstack/react-query';
+import { fbAuth } from 'common/lib/firebase/firebase';
 import { AuthService } from 'core';
 import { PageRequestType } from 'core/constants/types';
 import SoupService from 'core/services/soupService';
@@ -60,6 +61,27 @@ const TablePage = () => {
 
   const handleModalClose = () => {};
 
+  const copyToLink = () => {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      alert('클립보드에 복사되었습니다. 친구들에게 링크를 공유해주세요.');
+    });
+  };
+
+  const goToCookPage = () => {
+    if (fbAuth.currentUser) {
+      if (fbAuth.currentUser.uid === userId) {
+        alert(
+          '나 자신에게는 떡국을 남길 수 없어요. 친구에게 링크를 보내주세요.'
+        );
+      } else {
+        router.push(`/user/cook/${userId}`);
+      }
+    } else {
+      router.push(`/auth/login?redirect=${userId}`);
+      alert('떡국을 전달하기 위해 로그인해주세요.');
+    }
+  };
+
   if (isLoading) {
     return (
       <div className={styles.spinnerWrapper}>
@@ -97,10 +119,12 @@ const TablePage = () => {
           })}
         </Slider>
         <div className={styles.buttonsWrapper}>
-          <Button status="main">링크 복사하기</Button>
-          <Link href="/user/cook">
-            <Button status="main">떡국 전해주기</Button>
-          </Link>
+          <Button status="main" onClick={copyToLink}>
+            링크 복사하기
+          </Button>
+          <Button status="main" onClick={goToCookPage}>
+            떡국 전해주기
+          </Button>
         </div>
 
         {/* {soupMessage && (
