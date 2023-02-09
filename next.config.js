@@ -1,10 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  experimental: {
-    appDir: true,
+  webpack(config) {
+    config.resolve.modules.push(__dirname);
+    return config;
   },
-  compiler: {
-    styledComponents: true,
+  images: {
+    domains: ['firebasestorage.googleapis.com'],
   },
 };
 

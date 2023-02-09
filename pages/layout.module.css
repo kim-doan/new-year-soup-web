@@ -1,0 +1,11 @@
+.main {
+  width: 100%;
+  max-width: 600px;
+  height: 100vh;
+  margin: 0 auto;
+  background-color: var(--theme-beige);
+}
+
+.cook {
+  background-color: #e4d5c6;
+}

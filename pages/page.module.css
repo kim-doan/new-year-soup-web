@@ -1,0 +1,34 @@
+.page {
+  position: relative;
+}
+
+.background {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  background-image: url(/assets/default/mainBg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.buttonWrapper {
+  position: absolute;
+  width: 100%;
+  margin-top: 100px;
+  text-align: center;
+}
+
+.buttonWrapper button {
+  width: 240px;
+}
+
+.imageWrapper {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.titleLogo {
+  max-width: 180px;
+  max-height: 180px;
+  object-fit: cover;
+}

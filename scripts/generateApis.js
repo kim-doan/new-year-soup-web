@@ -22,17 +22,12 @@ const commonCustomizations = [
 
 const apis = [
   {
-    name: 'characterSampleApi',
-    specLocation: './apiSpecs/characterSampleApi.yaml',
-    customizations: commonCustomizations,
-  },
-  {
-    name: 'clayfulApi',
-    specLocation: './apiSpecs/clayfulApi.yaml',
+    name: 'soupApi',
+    specLocation: './apiSpecs/soupApi.yaml',
     customizations: commonCustomizations,
   },
 ];
-const apiClientsDir = './src/apiClients';
+const apiClientsDir = './apiClients';
 
 shell.rm('-r', apiClientsDir);
 
@@ -45,7 +40,7 @@ apis.forEach((api) => {
       `openapi-generator-cli generate -i ${api.specLocation}`,
       '-g typescript-axios',
       `-o ${apiClientDir}`,
-      // "-c openapi-config.json",
+      '-c openapi-config.json',
       '--type-mappings date=string,object=any',
     ].join(' ')
   );

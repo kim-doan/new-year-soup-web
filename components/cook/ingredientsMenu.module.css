@@ -1,0 +1,30 @@
+.menu {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background-color: #ffffff50;
+  border-radius: 30px;
+  padding: 5px 0;
+}
+
+.ingredientWrapper {
+  position: relative;
+  max-height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.sideTray {
+  width: 120px;
+  height: 100%;
+  z-index: 1;
+}
+
+.ingredient {
+  position: absolute;
+  top: 0;
+  cursor: pointer;
+  height: auto;
+  z-index: 2;
+}

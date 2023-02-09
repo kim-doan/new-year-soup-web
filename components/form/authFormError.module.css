@@ -1,0 +1,8 @@
+.formErrorWrapper {
+  margin-top: 4px;
+}
+
+.formError {
+  color: red;
+  font-size: 12px;
+}
