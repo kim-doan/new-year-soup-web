@@ -17,8 +17,9 @@
 
 .soupTable article {
   position: absolute;
-  text-align: center;
   cursor: pointer;
+  display: flex;
+  justify-content: center;
 }
 
 .soupTable article img {
@@ -28,7 +29,6 @@
 .soupTable article span {
   position: absolute;
   bottom: 32px;
-  left: 24px;
   color: #fff;
   text-shadow: 1px 1px 1px black;
   font-size: 16px;
