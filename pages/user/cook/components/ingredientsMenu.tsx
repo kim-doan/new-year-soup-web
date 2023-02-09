@@ -9,7 +9,7 @@ import {
   egg,
   gimgaru,
   dumpling,
-} from '../../assets/ingredient';
+} from 'assets/ingredient';
 import { useRecoilState } from 'recoil';
 import { FingerAction, SoupDecoration } from 'core/states/cookState';
 

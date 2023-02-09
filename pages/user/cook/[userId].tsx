@@ -2,7 +2,7 @@
 import { FingerAction, SoupBowl } from 'core/states/cookState';
 import Lottie from 'react-lottie';
 import { useRecoilState } from 'recoil';
-import MagicAnimation from '../assets/lottie/Magic.json';
+import MagicAnimation from 'assets/lottie/Magic.json';
 import SlideMenu from './components/slideMenu';
 import styles from './cookPage.module.css';
 import SoupDecorations from './components/soupDecorations';
