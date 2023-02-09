@@ -31,7 +31,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 10;
+  z-index: 100;
   background-color: #00000030;
 }
 
@@ -43,7 +43,7 @@
   height: 100%;
   background-color: var(--theme-brown);
   transition: transform 0.4s ease-in-out;
-  z-index: 20;
+  z-index: 200;
 }
 
 .menu.open {

@@ -8,7 +8,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   onClick?: () => void;
 }
 
-const Button = ({ status, children, type, onClick }: ButtonProps) => {
+const Button = ({ status, children, type, onClick, disabled }: ButtonProps) => {
   const matchStatus = () => {
     switch (status) {
       case 'main':
@@ -25,6 +25,7 @@ const Button = ({ status, children, type, onClick }: ButtonProps) => {
       className={`${styles.btn} ${matchStatus()}`}
       onClick={onClick}
       type={type}
+      disabled={disabled}
     >
       {children}
     </button>

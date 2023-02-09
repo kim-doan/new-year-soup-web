@@ -21,9 +21,14 @@
   cursor: pointer;
 }
 
+.soupTable article img {
+  object-fit: none;
+}
+
 .soupTable article span {
   position: absolute;
-  bottom: 1px;
+  bottom: 32px;
+  left: 24px;
   color: #fff;
   text-shadow: 1px 1px 1px black;
   font-size: 16px;
@@ -31,23 +36,23 @@
 }
 
 .soupTable .position_three {
-  top: 10px;
-  left: 125px;
+  top: 15px;
+  left: 115px;
 }
 
 .soupTable .position_four {
-  top: 110px;
-  left: 125px;
+  top: 115px;
+  left: 115px;
 }
 
 .soupTable .position_one {
   top: 60px;
-  left: 40px;
+  left: 30px;
 }
 
 .soupTable .position_two {
   top: 60px;
-  right: 40px;
+  right: 30px;
 }
 
 @media (max-width: 450px) {

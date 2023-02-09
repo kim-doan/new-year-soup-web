@@ -1,12 +1,15 @@
 'use client';
 import { useQuery } from '@tanstack/react-query';
+import { fbAuth } from 'common/lib/firebase/firebase';
 import { AuthService } from 'core';
 import { PageRequestType } from 'core/constants/types';
 import SoupService from 'core/services/soupService';
+import { SoupContents } from 'core/states/cookState';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import Slider from 'react-slick';
+import { useRecoilState } from 'recoil';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import Button from '../../components/button/button';
@@ -33,6 +36,8 @@ const TablePage = () => {
     page: 0,
     size: 4,
   });
+  const [contentsModal, setContentsModal] = useState(false);
+  const [soupContents] = useRecoilState(SoupContents);
 
   const { getSoupList } = new SoupService();
   const { getUser } = new AuthService();
@@ -55,10 +60,36 @@ const TablePage = () => {
 
   const handleAfterChange = (currentSlide: number) => {
     setPageable({ ...pageable, page: currentSlide });
-    console.log(pageable);
   };
 
-  const handleModalClose = () => {};
+  const handleModalOpen = () => {
+    setContentsModal(true);
+  };
+
+  const handleModalClose = () => {
+    setContentsModal(false);
+  };
+
+  const copyToLink = () => {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+      alert('클립보드에 복사되었습니다. 친구들에게 링크를 공유해주세요.');
+    });
+  };
+
+  const goToCookPage = () => {
+    if (fbAuth.currentUser) {
+      if (fbAuth.currentUser.uid === userId) {
+        alert(
+          '나 자신에게는 떡국을 남길 수 없어요. 친구에게 링크를 보내주세요.'
+        );
+      } else {
+        router.push(`/user/cook/${userId}`);
+      }
+    } else {
+      router.push(`/auth/login?redirect=${userId}`);
+      alert('떡국을 전달하기 위해 로그인해주세요.');
+    }
+  };
 
   if (isLoading) {
     return (
@@ -90,32 +121,39 @@ const TablePage = () => {
           {Array.from({ length: soupList?.page?.totalPage ?? 1 }).map(() => {
             return (
               <SoupTable
+                userId={userId as string}
                 soupList={soupList?.data ?? []}
+                handleModalOpen={handleModalOpen}
                 key={soupList?.page?.page?.toString() ?? '0'}
               />
             );
           })}
         </Slider>
         <div className={styles.buttonsWrapper}>
-          <Button status="main">링크 복사하기</Button>
-          <Link href="/user/cook">
-            <Button status="main">떡국 전해주기</Button>
-          </Link>
+          <Button status="main" onClick={copyToLink}>
+            링크 복사하기
+          </Button>
+          <Button status="main" onClick={goToCookPage}>
+            떡국 전해주기
+          </Button>
         </div>
 
-        {/* {soupMessage && (
+        {contentsModal && (
           <div className={styles.modalWrapper}>
             <div className={styles.background} onClick={handleModalClose}></div>
             <div className={styles.messageWrapper}>
               <textarea
                 className={styles.text}
-                value={soupMessage}
+                value={soupContents}
                 readOnly={true}
                 spellCheck={false}
               ></textarea>
             </div>
+            <Button status="primary" onClick={handleModalClose}>
+              확인
+            </Button>
           </div>
-        )} */}
+        )}
       </section>
     </>
   );

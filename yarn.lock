@@ -749,6 +749,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-lottie@^1.2.6":
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/@types/react-lottie/-/react-lottie-1.2.6.tgz#4f351dfdf5f93a46a3a9714fbb319f1e0f030eaf"
+  integrity sha512-fvGJHD7SeUdVESHo7f7erRnXkTWaa/6Mo5TB+R0/ieSftKoFspA4sMlF2qMH6BljXI7ehFJbBtrD5bzDxPCkGg==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-slick@^0.23.10":
   version "0.23.10"
   resolved "https://registry.yarnpkg.com/@types/react-slick/-/react-slick-0.23.10.tgz#56126e6e4e95cdce7771535b2811c2c1931a7caa"
@@ -776,6 +783,11 @@
   version "0.16.2"
   resolved "https://registry.yarnpkg.com/@types/scheduler/-/scheduler-0.16.2.tgz#1a62f89525723dde24ba1b01b092bf5df8ad4d39"
   integrity sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==
+
+"@types/uuid@^9.0.0":
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/@types/uuid/-/uuid-9.0.0.tgz#53ef263e5239728b56096b0a869595135b7952d2"
+  integrity sha512-kr90f+ERiQtKWMz5rP32ltJ/BtULDI5RVO0uavn1HQUOwjx0R1h0rnDYNL0CepF1zL5bSY6FISAfd9tOdDhU5Q==
 
 "@typescript-eslint/parser@^5.42.0":
   version "5.48.1"
@@ -961,6 +973,14 @@ axobject-query@^3.1.1:
   integrity sha512-goKlv8DZrK9hUh975fnHzhNIO4jUnFCfv/dszV5VwUGDFjI6vQ2VwoyjYjYNEbBE8AH87TduWP5uyDR1D+Iteg==
   dependencies:
     deep-equal "^2.0.5"
+
+babel-runtime@^6.26.0:
+  version "6.26.0"
+  resolved "https://registry.yarnpkg.com/babel-runtime/-/babel-runtime-6.26.0.tgz#965c7058668e82b55d7bfe04ff2337bc8b5647fe"
+  integrity sha512-ITKNuq2wKlW1fJg9sSW52eepoYgZBggvOAHC0u/CYu/qxQ9EVzThCgR69BnSXLHjy2f7SY5zaQ4yt7H9ZVxY2g==
+  dependencies:
+    core-js "^2.4.0"
+    regenerator-runtime "^0.11.0"
 
 balanced-match@^1.0.0:
   version "1.0.2"
@@ -1165,6 +1185,11 @@ console.table@0.10.0:
   integrity sha512-dPyZofqggxuvSf7WXvNjuRfnsOk1YazkVP8FdxH4tcH2c37wc79/Yl6Bhr7Lsu00KMgy2ql/qCMuNu8xctZM8g==
   dependencies:
     easy-table "1.1.0"
+
+core-js@^2.4.0:
+  version "2.6.12"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.12.tgz#d9333dfa7b065e347cc5682219d6f690859cc2ec"
+  integrity sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ==
 
 cross-spawn@^7.0.2, cross-spawn@^7.0.3:
   version "7.0.3"
@@ -2444,6 +2469,11 @@ loose-envify@^1.1.0, loose-envify@^1.4.0:
   dependencies:
     js-tokens "^3.0.0 || ^4.0.0"
 
+lottie-web@^5.1.3:
+  version "5.10.2"
+  resolved "https://registry.yarnpkg.com/lottie-web/-/lottie-web-5.10.2.tgz#a1c952b6734759fcd369eba73b6b7e3d9a76ce0b"
+  integrity sha512-d0PFIGiwuMsJYaF4uPo+qG8dEorlI+xFI2zrrFtE1bGO4WoLIz+NjremxEq1swpR7juR10aeOtmNh3d6G3ub0A==
+
 lru-cache@^6.0.0:
   version "6.0.0"
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-6.0.0.tgz#6d6fe6570ebd96aaf90fcad1dafa3b2566db3a94"
@@ -2847,6 +2877,14 @@ react-is@^16.13.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.13.1.tgz#789729a4dc36de2999dc156dd6c1d9c18cea56a4"
   integrity sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==
 
+react-lottie@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/react-lottie/-/react-lottie-1.2.3.tgz#8544b96939e088658072eea5e12d912cdaa3acc1"
+  integrity sha512-qLCERxUr8M+4mm1LU0Ruxw5Y5Fn/OmYkGfnA+JDM/dZb3oKwVAJCjwnjkj9TMHtzR2U6sMEUD3ZZ1RaHagM7kA==
+  dependencies:
+    babel-runtime "^6.26.0"
+    lottie-web "^5.1.3"
+
 react-slick@^0.29.0:
   version "0.29.0"
   resolved "https://registry.yarnpkg.com/react-slick/-/react-slick-0.29.0.tgz#0bed5ea42bf75a23d40c0259b828ed27627b51bb"
@@ -2892,6 +2930,11 @@ reflect-metadata@0.1.13:
   version "0.1.13"
   resolved "https://registry.yarnpkg.com/reflect-metadata/-/reflect-metadata-0.1.13.tgz#67ae3ca57c972a2aa1642b10fe363fe32d49dc08"
   integrity sha512-Ts1Y/anZELhSsjMcU605fU9RE4Oi3p5ORujwbIKXfWa+0Zxs510Qrmrce5/Jowq3cHSZSJqBjypxmHarc+vEWg==
+
+regenerator-runtime@^0.11.0:
+  version "0.11.1"
+  resolved "https://registry.yarnpkg.com/regenerator-runtime/-/regenerator-runtime-0.11.1.tgz#be05ad7f9bf7d22e056f9726cee5017fbf19e2e9"
+  integrity sha512-MguG95oij0fC3QV3URf4V2SDYGJhJnJGqvIIgdECeODCT98wSWDAJ94SSuVpYQUoTcGUIL6L4yNB7j1DFFHSBg==
 
 regenerator-runtime@^0.13.11:
   version "0.13.11"
@@ -3381,6 +3424,11 @@ uuid@8.3.2:
   version "8.3.2"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-8.3.2.tgz#80d5b5ced271bb9af6c445f21a1a04c606cefbe2"
   integrity sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==
+
+uuid@^9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-9.0.0.tgz#592f550650024a38ceb0c562f2f6aa435761efb5"
+  integrity sha512-MXcSTerfPa4uqyzStbRoTgt5XIe3x5+42+q1sDuy3R5MDk66URdLMOZe5aPX/SQd+kuYAh0FdP/pO28IkQyTeg==
 
 wcwidth@>=1.0.1, wcwidth@^1.0.1:
   version "1.0.1"

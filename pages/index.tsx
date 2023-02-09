@@ -1,13 +1,11 @@
 import Head from 'next/head';
 import titleLogo from 'assets/img/titleLogo.png';
 import Link from 'next/link';
-import { useRecoilState } from 'recoil';
 import Button from './components/button/button';
-import { authState } from 'core/states/authState';
 import styles from './page.module.css';
 import Image from 'next/image';
 import { fbAuth } from 'common/lib/firebase/firebase';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const Home = () => {
   const [isLogin, setIsLogin] = useState(false);

@@ -1,0 +1,113 @@
+.dumpling {
+  position: absolute;
+  top: -3px;
+  left: 10px;
+  width: 100%;
+  height: inherit;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.dumpling.on {
+  opacity: 1;
+}
+
+.dumpling img {
+  width: 240px;
+}
+
+.egg {
+  position: absolute;
+  top: -5px;
+  left: 5px;
+  width: 100%;
+  height: inherit;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.egg.on {
+  opacity: 1;
+}
+
+.egg img {
+  width: 240px;
+}
+
+.gimgaru {
+  position: absolute;
+  top: -5px;
+  left: 5px;
+  width: 100%;
+  height: inherit;
+  z-index: 20;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.gimgaru.on {
+  opacity: 1;
+}
+
+.gimgaru img {
+  width: 240px;
+}
+
+.greenOnion {
+  position: absolute;
+  top: -20px;
+  left: 5px;
+  width: 100%;
+  height: inherit;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.greenOnion.on {
+  opacity: 1;
+}
+
+.greenOnion img {
+  width: 220px;
+}
+
+.meat {
+  position: absolute;
+  top: -40px;
+  left: 25px;
+  width: 100%;
+  height: inherit;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.meat.on {
+  opacity: 1;
+}
+
+.meat img {
+  width: 200px;
+}
+
+.pepper {
+  position: absolute;
+  top: -5px;
+  left: 10px;
+  width: 100%;
+  height: inherit;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.pepper.on {
+  opacity: 1;
+}
+
+.pepper img {
+  width: 240px;
+}
