@@ -4,6 +4,9 @@ const nextConfig = {
     config.resolve.modules.push(__dirname);
     return config;
   },
+  images: {
+    domains: ['firebasestorage.googleapis.com'],
+  },
 };
 
 module.exports = nextConfig;

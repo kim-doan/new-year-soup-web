@@ -7,13 +7,13 @@ export default class SoupService {
     this.soupApi = new SoupApi();
   }
 
-  public async getSoupList() {
+  public getSoupList = async (uid: string, page: number, size: number) => {
     try {
-      const res = await this.soupApi.meSoup();
+      const res = await this.soupApi.getSoup(uid, page, size);
 
       return res.data;
     } catch (e) {
-      alert('내 떡국 리스트를 불러오는데 실패했습니다');
+      console.log(e);
     }
-  }
+  };
 }
