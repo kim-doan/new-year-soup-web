@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import titleLogo from 'assets/default/titleLogo.png';
+import titleLogo from '/public/assets/default/titleLogo.png';
 import { AuthService } from 'core';
 import React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';

@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import titleLogo from 'assets/default/titleLogo.png';
+import titleLogo from '/public/assets/default/titleLogo.png';
 import { useRouter } from 'next/navigation';
 import React, { useRef } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
