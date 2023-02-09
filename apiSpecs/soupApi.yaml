@@ -4,7 +4,7 @@ info:
   description: 내 떡국을 끓여줘 API 표준 스펙입니다.
   version: 1.0.11
 servers:
-  - url: 'http://43.201.115.174:9112/api'
+  - url: 'https://kim-doan:9000/api'
 security:
   - bearerAuth: []
 tags:
