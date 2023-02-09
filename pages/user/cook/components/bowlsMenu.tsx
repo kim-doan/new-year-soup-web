@@ -2,7 +2,14 @@ import Image from 'next/image';
 import React from 'react';
 import styles from './bowlsMenu.module.css';
 
-import { bowl1, bowl2, bowl3, bowl4, bowl5, bowl6 } from '../../assets/bowls';
+import {
+  bowl1,
+  bowl2,
+  bowl3,
+  bowl4,
+  bowl5,
+  bowl6,
+} from '../../../../assets/user/assets/bowls';
 import {
   soupBowl1,
   soupBowl2,
@@ -10,7 +17,7 @@ import {
   soupBowl4,
   soupBowl5,
   soupBowl6,
-} from '../../assets/soups';
+} from '../../../../assets/user/assets/soups';
 
 import { useRecoilState } from 'recoil';
 import { SoupBowl } from 'core/states/cookState';
