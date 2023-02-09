@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postinstall": "yarn generate:openapi",
     "start": "next start",
     "lint": "next lint",
     "generate:openapi": "node ./scripts/generateApis.js"
@@ -22,7 +23,7 @@
     "date-fns": "^2.29.3",
     "eslint": "8.30.0",
     "eslint-config-next": "13.0.7",
-    "firebase": "^9.15.0",
+    "firebase": "^9.17.1",
     "html2canvas": "^1.4.1",
     "lodash-es": "^4.17.21",
     "next": "13.0.7",
