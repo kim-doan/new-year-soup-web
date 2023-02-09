@@ -1,20 +1,20 @@
 /* eslint-disable @next/next/no-img-element */
+import { storage } from 'common/lib/firebase/firebase';
+import Button from 'components/button/button';
+import SlideMenu from 'components/cook/slideMenu';
+import SoupDecorations from 'components/cook/soupDecorations';
+import LoadingSpinner from 'components/loadingSpinner/loadingSpinner';
+import SoupService from 'core/services/soupService';
 import { FingerAction, SoupBowl } from 'core/states/cookState';
+import { ref, uploadBytesResumable } from 'firebase/storage';
+import html2canvas from 'html2canvas';
+import { useRouter } from 'next/router';
+import { useRef, useState } from 'react';
 import Lottie from 'react-lottie';
 import { useRecoilState } from 'recoil';
-import MagicAnimation from '../../../assets/user/assets/lottie/Magic.json';
-import SlideMenu from './components/slideMenu';
-import styles from './cookPage.module.css';
-import SoupDecorations from './components/soupDecorations';
-import html2canvas from 'html2canvas';
 import { v4 as uuidv4 } from 'uuid';
-import { ref, uploadBytesResumable } from 'firebase/storage';
-import { fbAuth, storage } from 'common/lib/firebase/firebase';
-import { useRef, useState } from 'react';
-import { useRouter } from 'next/router';
-import SoupService from 'core/services/soupService';
-import Button from 'components/button/button';
-import LoadingSpinner from 'components/loadingSpinner/loadingSpinner';
+import MagicAnimation from '../../../assets/user/assets/lottie/Magic.json';
+import styles from './cookPage.module.css';
 
 const lottieOptions = {
   loop: true,

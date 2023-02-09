@@ -11,7 +11,7 @@ import {
   greenOnionDeco,
   meatDeco,
   pepperDeco,
-} from '../../../../assets/user/assets/decorations';
+} from 'assets/user/assets/decorations';
 
 const SoupDecorations = () => {
   const [soupDecoration] = useRecoilState(SoupDecoration);

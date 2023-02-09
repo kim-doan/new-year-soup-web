@@ -1,11 +1,12 @@
 'use client';
 import { useQuery } from '@tanstack/react-query';
 import { fbAuth } from 'common/lib/firebase/firebase';
+import PrevArrow from 'components/table/prevArrow';
+import SoupTable from 'components/table/soupTable';
 import { AuthService } from 'core';
 import { PageRequestType } from 'core/constants/types';
 import SoupService from 'core/services/soupService';
 import { SoupContents } from 'core/states/cookState';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import Slider from 'react-slick';
@@ -14,9 +15,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import Button from '../../../components/button/button';
 import LoadingSpinner from '../../../components/loadingSpinner/loadingSpinner';
-import NextArrow from './components/nextArrow';
-import PrevArrow from './components/prevArrow';
-import SoupTable from './components/soupTable';
+import NextArrow from '../../../components/table/nextArrow';
 import styles from './tablePage.module.css';
 
 const settings = {

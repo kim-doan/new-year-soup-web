@@ -10,7 +10,7 @@
   position: relative;
   width: 320px;
   height: 260px;
-  background-image: url(../../../../assets/img/table.png);
+  background-image: url(/assets/img/table.png);
   background-repeat: no-repeat;
   background-size: contain;
 }

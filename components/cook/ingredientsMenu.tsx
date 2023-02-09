@@ -2,16 +2,16 @@ import Image from 'next/image';
 import React from 'react';
 import styles from './ingredientsMenu.module.css';
 
+import { useRecoilState } from 'recoil';
+import { FingerAction, SoupDecoration } from 'core/states/cookState';
 import {
+  dumpling,
+  egg,
+  gimgaru,
   greenOnion,
   meat,
   pepper,
-  egg,
-  gimgaru,
-  dumpling,
-} from '../../../../assets/user/assets/ingredient';
-import { useRecoilState } from 'recoil';
-import { FingerAction, SoupDecoration } from 'core/states/cookState';
+} from 'assets/user/assets/ingredient';
 
 const ingredientsList = [
   {
