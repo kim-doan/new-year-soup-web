@@ -168,7 +168,7 @@ components:
     DeliverySoupRequest:
       type: object
       properties:
-        resUserId:
+        reqUserId:
           type: string
           description: 떡국을 전달 받을 사용자의 UID
         soupContents:
