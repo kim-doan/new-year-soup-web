@@ -1,5 +1,5 @@
 import { Soup } from 'apiClients/soupApi';
-import soupImage from 'assets/default/soup01.png';
+import soupImage from '/public/assets/default/soup01.png';
 import { fbAuth } from 'common/lib/firebase/firebase';
 import SoupService from 'core/services/soupService';
 import { SoupContents } from 'core/states/cookState';

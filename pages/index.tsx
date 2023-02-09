@@ -1,7 +1,7 @@
 import Head from 'next/head';
-import titleLogo from 'assets/default/titleLogo.png';
+import titleLogo from '/public/assets/default/titleLogo.png';
 import Link from 'next/link';
-import Button from './components/button/button';
+import Button from '../components/button/button';
 import styles from './page.module.css';
 import Image from 'next/image';
 import { fbAuth } from 'common/lib/firebase/firebase';

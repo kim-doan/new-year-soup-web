@@ -4,7 +4,7 @@ import styles from './slideMenu.module.css';
 import { TiArrowSortedUp, TiArrowSortedDown } from 'react-icons/ti';
 import React, { useState } from 'react';
 import BowlsMenu from './bowlsMenu';
-import Button from 'pages/components/button/button';
+import Button from 'components/button/button';
 import IngredientsMenu from './ingredientsMenu';
 
 type MenuTypes = 'Bowl' | 'Ingredient';

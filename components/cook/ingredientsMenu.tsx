@@ -9,8 +9,8 @@ import {
   egg,
   gimgaru,
   dumpling,
-} from 'assets/ingredient';
-import sideTray from 'assets/sideTray.png';
+} from 'public/assets/ingredient';
+import sideTray from '/public/assets/sideTray.png';
 import { useRecoilState } from 'recoil';
 import { FingerAction, SoupDecoration } from 'core/states/cookState';
 

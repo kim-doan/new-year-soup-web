@@ -1,5 +1,5 @@
 import { atom } from 'recoil';
-import { soupBowl1 } from 'assets/soups';
+import { soupBowl1 } from 'public/assets/soups';
 
 type SoupDecorationState = {
   dumpling: boolean;

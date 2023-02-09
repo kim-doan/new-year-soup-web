@@ -9,9 +9,9 @@ import {
   FormNameError,
   FormPasswordConfirmError,
   FormPasswordError,
-} from '../../components/form/authFormError';
+} from '../../../components/form/authFormError';
 import styles from './register.module.css';
-import Button from '../../components/button/button';
+import Button from '../../../components/button/button';
 import { AuthService } from 'core';
 import Head from 'next/head';
 

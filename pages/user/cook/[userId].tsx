@@ -2,10 +2,8 @@
 import { FingerAction, SoupBowl } from 'core/states/cookState';
 import Lottie from 'react-lottie';
 import { useRecoilState } from 'recoil';
-import MagicAnimation from 'assets/lottie/Magic.json';
-import SlideMenu from './components/slideMenu';
+import MagicAnimation from 'public/assets/lottie/Magic.json';
 import styles from './cookPage.module.css';
-import SoupDecorations from './components/soupDecorations';
 import html2canvas from 'html2canvas';
 import { v4 as uuidv4 } from 'uuid';
 import { ref, uploadBytesResumable } from 'firebase/storage';
@@ -13,8 +11,10 @@ import { fbAuth, storage } from 'common/lib/firebase/firebase';
 import { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import SoupService from 'core/services/soupService';
-import Button from 'pages/components/button/button';
-import LoadingSpinner from 'pages/components/loadingSpinner/loadingSpinner';
+import Button from 'components/button/button';
+import LoadingSpinner from 'components/loadingSpinner/loadingSpinner';
+import SoupDecorations from 'components/cook/soupDecorations';
+import SlideMenu from 'components/cook/slideMenu';
 
 const lottieOptions = {
   loop: true,
