@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postinstall": "yarn generate:openapi",
     "start": "next start",
     "lint": "next lint",
     "generate:openapi": "node ./scripts/generateApis.js"
