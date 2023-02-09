@@ -1,5 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
 import React from 'react';
-import Image from 'next/image';
 import { useRecoilState } from 'recoil';
 import { SoupDecoration } from 'core/states/cookState';
 
@@ -23,10 +23,10 @@ const SoupDecorations = () => {
           soupDecoration.dumpling ? styles.on : ''
         }`}
       >
-        <Image src={dumplingDeco} alt="dumpling" />
+        <img src={dumplingDeco.src} alt="dumpling" />
       </div>
       <div className={`${styles.egg} ${soupDecoration.egg ? styles.on : ''}`}>
-        <Image src={eggDeco} alt="egg" />
+        <img src={eggDeco.src} alt="egg" />
       </div>
 
       <div
@@ -34,22 +34,22 @@ const SoupDecorations = () => {
           soupDecoration.gimgaru ? styles.on : ''
         }`}
       >
-        <Image src={gimgaruDeco} alt="gimgaru" />
+        <img src={gimgaruDeco.src} alt="gimgaru" />
       </div>
       <div
         className={`${styles.greenOnion} ${
           soupDecoration.greenOnion ? styles.on : ''
         }`}
       >
-        <Image src={greenOnionDeco} alt="greenOnion" />
+        <img src={greenOnionDeco.src} alt="greenOnion" />
       </div>
       <div className={`${styles.meat} ${soupDecoration.meat ? styles.on : ''}`}>
-        <Image src={meatDeco} alt="meat" />
+        <img src={meatDeco.src} alt="meat" />
       </div>
       <div
         className={`${styles.pepper} ${soupDecoration.pepper ? styles.on : ''}`}
       >
-        <Image src={pepperDeco} alt="pepper" />
+        <img src={pepperDeco.src} alt="pepper" />
       </div>
     </>
   );
