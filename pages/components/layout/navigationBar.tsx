@@ -47,26 +47,25 @@ const NavigationBar = () => {
               홈 화면으로 이동
             </Link>
           </li>
-          <li>
-            <Link
-              href={`/user/table/${fbAuth.currentUser?.uid}`}
-              onClick={handleNavigation}
-            >
-              <div className={styles.iconWrapper}>
-                <TbSoup />
-              </div>
-              내 밥상 보러가기
-            </Link>
-          </li>
           {fbAuth && fbAuth.currentUser ? (
-            <li>
-              <div onClick={handleSignOut}>
-                <div className={styles.iconWrapper}>
-                  <VscSignOut />
+            <>
+              <li>
+                <Link href={`/user/table/${fbAuth.currentUser.uid}`}>
+                  <div className={styles.iconWrapper}>
+                    <TbSoup />
+                  </div>
+                  내 밥상 보러가기
+                </Link>
+              </li>
+              <li>
+                <div onClick={handleSignOut}>
+                  <div className={styles.iconWrapper}>
+                    <VscSignOut />
+                  </div>
+                  로그아웃
                 </div>
-                로그아웃
-              </div>
-            </li>
+              </li>
+            </>
           ) : (
             <li>
               <Link href="/auth/login" onClick={handleNavigation}>
