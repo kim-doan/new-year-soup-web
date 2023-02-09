@@ -8,9 +8,6 @@ import { TbSoup } from 'react-icons/tb';
 import { VscSignOut } from 'react-icons/vsc';
 import styles from './navigationBar.module.css';
 import { fbAuth } from 'common/lib/firebase/firebase';
-import { onAuthStateChanged } from 'firebase/auth';
-import { useRecoilState } from 'recoil';
-import { authState } from 'core';
 
 const NavigationBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -43,7 +40,7 @@ const NavigationBar = () => {
         </div>
         <ul>
           <li>
-            <Link href="/">
+            <Link href="/" onClick={handleNavigation}>
               <div className={styles.iconWrapper}>
                 <TiHome />
               </div>
@@ -51,7 +48,10 @@ const NavigationBar = () => {
             </Link>
           </li>
           <li>
-            <Link href="/">
+            <Link
+              href={`/user/table/${fbAuth.currentUser?.uid}`}
+              onClick={handleNavigation}
+            >
               <div className={styles.iconWrapper}>
                 <TbSoup />
               </div>
@@ -69,7 +69,7 @@ const NavigationBar = () => {
             </li>
           ) : (
             <li>
-              <Link href="/auth/login">
+              <Link href="/auth/login" onClick={handleNavigation}>
                 <div className={styles.iconWrapper}>
                   <VscSignOut />
                 </div>
