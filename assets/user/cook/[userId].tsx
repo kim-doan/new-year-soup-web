@@ -13,8 +13,8 @@ import { fbAuth, storage } from 'common/lib/firebase/firebase';
 import { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import SoupService from 'core/services/soupService';
-import Button from 'pages/components/button/button';
-import LoadingSpinner from 'pages/components/loadingSpinner/loadingSpinner';
+import Button from 'components/button/button';
+import LoadingSpinner from 'components/loadingSpinner/loadingSpinner';
 
 const lottieOptions = {
   loop: true,

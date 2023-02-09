@@ -7,9 +7,9 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import {
   FormIdError,
   FormPasswordError,
-} from '../../components/form/authFormError';
+} from '../../../components/form/authFormError';
 import styles from './login.module.css';
-import Button from '../../components/button/button';
+import Button from '../../../components/button/button';
 import Head from 'next/head';
 import { NextRouter, withRouter } from 'next/router';
 

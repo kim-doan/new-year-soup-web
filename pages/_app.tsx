@@ -5,7 +5,7 @@ import { RecoilRoot } from 'recoil';
 import 'configs/recoil';
 import styles from './layout.module.css';
 import Head from 'next/head';
-import NavigationBar from './components/layout/navigationBar';
+import NavigationBar from '../components/layout/navigationBar';
 
 const queryClient = new QueryClient();
 
