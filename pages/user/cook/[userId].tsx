@@ -1,6 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 import { FingerAction, SoupBowl } from 'core/states/cookState';
 import Lottie from 'react-lottie';
-import Image from 'next/image';
 import { useRecoilState } from 'recoil';
 import MagicAnimation from '../assets/lottie/Magic.json';
 import SlideMenu from './components/slideMenu';
@@ -9,11 +9,12 @@ import SoupDecorations from './components/soupDecorations';
 import html2canvas from 'html2canvas';
 import { v4 as uuidv4 } from 'uuid';
 import { ref, uploadBytesResumable } from 'firebase/storage';
-import { storage } from 'common/lib/firebase/firebase';
+import { fbAuth, storage } from 'common/lib/firebase/firebase';
 import { useRef, useState } from 'react';
 import { useRouter } from 'next/router';
 import SoupService from 'core/services/soupService';
 import Button from 'pages/components/button/button';
+import LoadingSpinner from 'pages/components/loadingSpinner/loadingSpinner';
 
 const lottieOptions = {
   loop: true,
@@ -65,13 +66,17 @@ const CookPage = () => {
           alert('떡국 이미지 업로드에 실패했습니다.');
         },
         async () => {
-          await deliverySoup(
+          const res = await deliverySoup(
             userId as string,
             contentsRef.current?.value ?? '',
             storageRef.name
           );
-
           setIsLoading(false);
+          if (res) {
+            alert('떡국을 전달해 주었습니다.');
+
+            router.push(`/user/table/${userId}`);
+          }
         }
       );
     });
@@ -102,6 +107,11 @@ const CookPage = () => {
 
   return (
     <section className={styles.page}>
+      {isLoading && (
+        <div className={styles.spinnerWrapper}>
+          <LoadingSpinner />
+        </div>
+      )}
       <div className={styles.soupTray}>
         <div
           className={`${styles.lottieWrapper} ${
@@ -112,7 +122,8 @@ const CookPage = () => {
         </div>
         <div id="new-year-soup" className={styles.soupWrapper}>
           <SoupDecorations />
-          <Image src={soupBowl} alt="soupImage" width={240} />
+          {/* NextImage 사용시 html2canvas 사이즈 이슈 발생 */}
+          <img src={soupBowl.src} alt="soupImage" width={240} />
         </div>
       </div>
       {contentsModal && (
