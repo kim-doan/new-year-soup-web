@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import titleLogo from 'assets/img/titleLogo.png';
+import titleLogo from 'assets/default/titleLogo.png';
 import Link from 'next/link';
 import Button from './components/button/button';
 import styles from './page.module.css';

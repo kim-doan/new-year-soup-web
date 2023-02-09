@@ -9,7 +9,8 @@ import {
   egg,
   gimgaru,
   dumpling,
-} from '../../assets/ingredient';
+} from 'assets/ingredient';
+import sideTray from 'assets/sideTray.png';
 import { useRecoilState } from 'recoil';
 import { FingerAction, SoupDecoration } from 'core/states/cookState';
 
@@ -110,10 +111,13 @@ const IngredientsMenu = () => {
     <div className={styles.menu}>
       {ingredientsList.map((ingredient) => {
         return (
-          <div key={ingredient.id} className={styles.ingredient}>
+          <div key={ingredient.id} className={styles.ingredientWrapper}>
+            <Image className={styles.sideTray} src={sideTray} alt="sideTray" />
             <Image
+              className={styles.ingredient}
               src={ingredient.src}
               alt="ingredientImage"
+              width={80}
               onClick={() => {
                 handleIngredientChoice(ingredient.id);
               }}
