@@ -31,3 +31,8 @@ export const FingerAction = atom({
   key: 'fingerAction',
   default: false,
 });
+
+export const SoupContents = atom({
+  key: 'soupContents',
+  default: '',
+});

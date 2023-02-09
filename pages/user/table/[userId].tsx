@@ -4,10 +4,12 @@ import { fbAuth } from 'common/lib/firebase/firebase';
 import { AuthService } from 'core';
 import { PageRequestType } from 'core/constants/types';
 import SoupService from 'core/services/soupService';
+import { SoupContents } from 'core/states/cookState';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import Slider from 'react-slick';
+import { useRecoilState } from 'recoil';
 import 'slick-carousel/slick/slick-theme.css';
 import 'slick-carousel/slick/slick.css';
 import Button from '../../components/button/button';
@@ -34,6 +36,8 @@ const TablePage = () => {
     page: 0,
     size: 4,
   });
+  const [contentsModal, setContentsModal] = useState(false);
+  const [soupContents] = useRecoilState(SoupContents);
 
   const { getSoupList } = new SoupService();
   const { getUser } = new AuthService();
@@ -56,10 +60,15 @@ const TablePage = () => {
 
   const handleAfterChange = (currentSlide: number) => {
     setPageable({ ...pageable, page: currentSlide });
-    console.log(pageable);
   };
 
-  const handleModalClose = () => {};
+  const handleModalOpen = () => {
+    setContentsModal(true);
+  };
+
+  const handleModalClose = () => {
+    setContentsModal(false);
+  };
 
   const copyToLink = () => {
     navigator.clipboard.writeText(window.location.href).then(() => {
@@ -112,7 +121,9 @@ const TablePage = () => {
           {Array.from({ length: soupList?.page?.totalPage ?? 1 }).map(() => {
             return (
               <SoupTable
+                userId={userId as string}
                 soupList={soupList?.data ?? []}
+                handleModalOpen={handleModalOpen}
                 key={soupList?.page?.page?.toString() ?? '0'}
               />
             );
@@ -127,19 +138,22 @@ const TablePage = () => {
           </Button>
         </div>
 
-        {/* {soupMessage && (
+        {contentsModal && (
           <div className={styles.modalWrapper}>
             <div className={styles.background} onClick={handleModalClose}></div>
             <div className={styles.messageWrapper}>
               <textarea
                 className={styles.text}
-                value={soupMessage}
+                value={soupContents}
                 readOnly={true}
                 spellCheck={false}
               ></textarea>
             </div>
+            <Button status="primary" onClick={handleModalClose}>
+              확인
+            </Button>
           </div>
-        )} */}
+        )}
       </section>
     </>
   );
