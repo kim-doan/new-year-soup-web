@@ -111,3 +111,58 @@
 .pepper img {
   width: 240px;
 }
+
+@media (max-width: 450px) {
+  .dumpling {
+    top: 18px;
+    left: -3px;
+  }
+  .dumpling img {
+    width: 220px;
+  }
+
+  .egg {
+    top: 20px;
+    left: -8px;
+  }
+
+  .egg img {
+    width: 220px;
+  }
+
+  .gimgaru {
+    top: 18px;
+    left: 0;
+  }
+
+  .gimgaru img {
+    width: 220px;
+  }
+
+  .greenOnion {
+    top: 10px;
+    left: 2px;
+  }
+
+  .greenOnion img {
+    width: 200px;
+  }
+
+  .meat {
+    top: -15px;
+    left: 15px;
+  }
+
+  .meat img {
+    width: 180px;
+  }
+
+  .pepper {
+    top: 18px;
+    left: -2px;
+  }
+
+  .pepper img {
+    width: 220px;
+  }
+}

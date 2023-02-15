@@ -123,7 +123,12 @@ const CookPage = () => {
         <div id="new-year-soup" className={styles.soupWrapper}>
           <SoupDecorations />
           {/* NextImage 사용시 html2canvas 사이즈 이슈 발생 */}
-          <img src={soupBowl.src} alt="soupImage" width={240} />
+          <img
+            className={styles.soupBowl}
+            src={soupBowl.src}
+            alt="soupImage"
+            width={240}
+          />
         </div>
       </div>
       {contentsModal && (
